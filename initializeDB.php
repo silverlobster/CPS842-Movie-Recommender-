@@ -1,5 +1,5 @@
 <?php
-    require 'dbconnect.php';
+    require 'db_connect.php';
 
     $connect->query("CREATE TABLE IF NOT EXISTS users (user_id INT(11) AUTO_INCREMENT PRIMARY KEY, user_name VARCHAR(128), user_password VARCHAR(128))");
 
