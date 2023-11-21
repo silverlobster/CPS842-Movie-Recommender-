@@ -18,5 +18,6 @@
         } else {
             die(mysqli_error($connect));
         }
+        $connect->close();
     }
 ?>
