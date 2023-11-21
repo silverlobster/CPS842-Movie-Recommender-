@@ -10,5 +10,3 @@
     $connect->close();
 ?>
 
-<!-- $connect->query("CREATE TABLE users (user_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-name VARCHAR(50), tel_no INT(50), email VARCHAR(50), address VARCHAR(50), login_id VARCHAR(50), password VARCHAR(50), cc_num VARCHAR(50), salt VARCHAR(50))"); -->
