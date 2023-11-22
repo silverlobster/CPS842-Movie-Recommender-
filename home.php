@@ -1,3 +1,5 @@
+
+
 <?php
 session_start();
 ?>
@@ -9,7 +11,7 @@ session_start();
     </head>
     <body>
         <?php
-        echo "<h1>Hello</h1>" $_SESSION['user']
+        echo "<h1>Hello</h1>" . $_SESSION["user"]
         ?>
     </body>
 </html>
