@@ -9,8 +9,9 @@
         $result = mysqli_query($connect, $sql);
 
         if (mysqli_num_rows($result) >= TRUE) {
-            echo "Username was already taken";
-            exit();
+            echo "<script>alert('Username was already taken')</script>";
+            header("location: signup.html");
+            // exit();
         }
         else {
             $sql = "INSERT into users (user_name, user_password) Values ('$name','$user_password')";
