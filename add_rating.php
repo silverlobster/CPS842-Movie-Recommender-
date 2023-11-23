@@ -15,8 +15,8 @@
             echo "Movie rating successfully created";
         }
         else {
-            $connect->query($sql);
-            //die(mysqli_error($connect));
+            // $connect->query($sql);
+            die(mysqli_error($connect));
         }
 
         /* $connect->close(); */
