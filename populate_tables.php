@@ -310,69 +310,67 @@
     )");
 
     $connect->query("INSERT into movies (title, genre, summary, studio) Values 
-    ('The Garden of Sinners Chapter 7: A Study in Murder - Part 2',
+    ('Cowboy Bebop: The Movie',
     'Action, Adventure, Award Winning, Fantasy', 
     'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
     'Studio Ghibli'
     )");
 
     $connect->query("INSERT into movies (title, genre, summary, studio) Values 
-    ('The Garden of Sinners Chapter 7: A Study in Murder - Part 2',
+    ('Made in Abyss: Wandering Twilight',
     'Action, Adventure, Award Winning, Fantasy', 
     'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
     'Studio Ghibli'
     )");
 
     $connect->query("INSERT into movies (title, genre, summary, studio) Values 
-    ('The Garden of Sinners Chapter 7: A Study in Murder - Part 2',
+    ('Puella Magi Madoka Magica the Movie Part 2: Eternal',
     'Action, Adventure, Award Winning, Fantasy', 
     'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
     'Studio Ghibli'
     )");
 
     $connect->query("INSERT into movies (title, genre, summary, studio) Values 
-    ('The Garden of Sinners Chapter 7: A Study in Murder - Part 2',
+    ('Nausicaä of the Valley of the Wind',
     'Action, Adventure, Award Winning, Fantasy', 
     'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
     'Studio Ghibli'
     )");
 
     $connect->query("INSERT into movies (title, genre, summary, studio) Values 
-    ('The Garden of Sinners Chapter 7: A Study in Murder - Part 2',
+    ('Kizumonogatari Part 1: Iron-Blooded',
     'Action, Adventure, Award Winning, Fantasy', 
     'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
     'Studio Ghibli'
     )");
 
     $connect->query("INSERT into movies (title, genre, summary, studio) Values 
-    ('The Garden of Sinners Chapter 7: A Study in Murder - Part 2',
+    ('Suzume',
     'Action, Adventure, Award Winning, Fantasy', 
     'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
     'Studio Ghibli'
     )");
 
     $connect->query("INSERT into movies (title, genre, summary, studio) Values 
-    ('The Garden of Sinners Chapter 7: A Study in Murder - Part 2',
+    ('K-ON! The Movie',
     'Action, Adventure, Award Winning, Fantasy', 
     'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
     'Studio Ghibli'
     )");
 
     $connect->query("INSERT into movies (title, genre, summary, studio) Values 
-    ('The Garden of Sinners Chapter 7: A Study in Murder - Part 2',
+    ('Ramayana: The Legend of Prince Rama',
     'Action, Adventure, Award Winning, Fantasy', 
     'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
     'Studio Ghibli'
     )");
 
     $connect->query("INSERT into movies (title, genre, summary, studio) Values 
-    ('The Garden of Sinners Chapter 7: A Study in Murder - Part 2',
+    ('Sasaki and Miyano: Graduation',
     'Action, Adventure, Award Winning, Fantasy', 
     'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
     'Studio Ghibli'
     )");
-
-    
 
     $connect->close();
 
