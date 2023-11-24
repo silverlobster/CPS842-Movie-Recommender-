@@ -107,39 +107,208 @@
     )");
 
     $connect->query("INSERT into movies (title, genre, summary, studio) Values 
-    ('Princess Mononoke',
+    ('Demon Slayer: Kimetsu no Yaiba - The Movie: Mugen Train',
     'Action, Adventure, Award Winning, Fantasy', 
     'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
     'Studio Ghibli'
     )");
 
     $connect->query("INSERT into movies (title, genre, summary, studio) Values 
-    ('Princess Mononoke',
+    ('Rascal Does Not Dream of a Dreaming Girl',
     'Action, Adventure, Award Winning, Fantasy', 
     'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
     'Studio Ghibli'
     )");
 
     $connect->query("INSERT into movies (title, genre, summary, studio) Values 
-    ('Princess Mononoke',
+    ('Mushishi Zoku Shou: Suzu no Shizuku',
     'Action, Adventure, Award Winning, Fantasy', 
     'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
     'Studio Ghibli'
     )");
 
     $connect->query("INSERT into movies (title, genre, summary, studio) Values 
-    ('Princess Mononoke',
+    ('Kizumonogatari Part 2: Hot-Blooded',
     'Action, Adventure, Award Winning, Fantasy', 
     'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
     'Studio Ghibli'
     )");
 
     $connect->query("INSERT into movies (title, genre, summary, studio) Values 
-    ('Princess Mononoke',
+    ('Wolf Children',
     'Action, Adventure, Award Winning, Fantasy', 
     'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
     'Studio Ghibli'
     )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Wolf Children',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Wolf Children',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Wolf Children',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Wolf Children',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Wolf Children',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Wolf Children',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Wolf Children',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Wolf Children',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Wolf Children',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Wolf Children',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Wolf Children',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Wolf Children',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Wolf Children',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Wolf Children',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Wolf Children',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Wolf Children',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Wolf Children',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Wolf Children',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Wolf Children',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Wolf Children',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Wolf Children',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Wolf Children',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Wolf Children',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Wolf Children',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
     
 
     $connect->close();
