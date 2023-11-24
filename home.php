@@ -39,6 +39,7 @@ $result = $connect->query($sql);
         </div>
 
         <div>
+            <!-- Convert the sql tables into dictionaries -->
             <?php
             $movie_dict = array();
             $sql = "SELECT movie_id, title FROM movies";
@@ -46,7 +47,6 @@ $result = $connect->query($sql);
             while ($row = $result->fetch_assoc()) {
                 $movie_dict[$row['movie_id']] = $row['title'];
             }
-            //$movie_array["1"] = 'hello';
             echo "" . print_r($movie_dict) . "<br>";
 
             $ratings_dict = array();
@@ -64,7 +64,23 @@ $result = $connect->query($sql);
                 $users_dict[$row["user_id"]] = $row['user_name'];
             }
             echo "" . print_r($users_dict);
+            ?>
+        </div>
 
+        <div>
+            <?php
+            echo "<table>";
+            echo "<tr>";
+            echo "<th> Users </th>";
+            for ( $i = 1; $i <= count($movie_dict); $i++ ) {
+                echo "<th>" . $movie_dict[$i] . "</th>";
+            }
+            echo "</tr>";
+            foreach ($ratings_dict as $user => $ratings ) {
+                echo "<tr>";
+                echo "<td>" . $users_dict[$user] . "<td>";
+                echo "</tr>";
+            }
             ?>
         </div>
 

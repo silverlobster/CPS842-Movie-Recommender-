@@ -71,6 +71,77 @@
     'Studio Ghibli'
     )");
 
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Fate/stay night: Heaven's Feel - III. Spring Song',
+    'Action, Fantasy, Supernatural', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Howl's Moving Castle',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Evangelion: 3.0+1.0 Thrice Upon a Time',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Made in Abyss: Dawn of the Deep Soul',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('The Disappearance of Haruhi Suzumiya',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Princess Mononoke',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Princess Mononoke',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Princess Mononoke',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Princess Mononoke',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+
+    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    ('Princess Mononoke',
+    'Action, Adventure, Award Winning, Fantasy', 
+    'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
+    'Studio Ghibli'
+    )");
+    
+
     $connect->close();
 
     //movie: movie_id, title, genre, user_id, summary, studio
