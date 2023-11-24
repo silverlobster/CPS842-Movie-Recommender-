@@ -6,12 +6,17 @@
         $rating = $_POST['rating'];
 
         //find if username exists
-        $sql = "INSERT into ratings (user_id, movie_id, rating) Values (".$_SESSION['uid'].", $movie_title, $rating)";
-        // echo $sql;
+        $sql = "INSERT into ratings (user_id, movie_id, ratings) Values (".$_SESSION['uid'].", $movie_title, $rating)";
+        //$sql = "INSERT INTO ratings (user_id, movie_id, ratings) VALUES (?, ?, ?)";
         $result = $connect->query($sql);
+        //$stmt = $connect->prepare($sql);
+
+        //$stmt->bind_param("iii", $user_id, $movie_title, $rating);
+
+        //$result = $stmt->execute();
 
         //if there exists a user then they should connect
-        if ($result === TRUE) {
+        if ($result) {
             echo "Movie rating successfully created";
         }
         else {
@@ -19,6 +24,8 @@
             die(mysqli_error($connect));
         }
 
-        /* $connect->close(); */
+        $connect->close();
+
+        
     }
 ?>

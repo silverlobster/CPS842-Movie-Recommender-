@@ -13,7 +13,7 @@
             $row = $result->fetch_assoc();
             session_start();
             $_SESSION["user"] = $row["user_name"];
-            $_SESSION['uid'] = $row['user_ID'];
+            $_SESSION['uid'] = $row['user_id'];
             header("location: home.php");
             exit();
         } else {

@@ -13,7 +13,7 @@ $result = $connect->query($sql);
     </head>
     <body>
         <?php
-        echo "<h1>Hello</h1>" . $_SESSION["user"]
+        echo "<h1>Hello</h1>" . $_SESSION["user"] . $_SESSION["uid"]
         ?>
         <div>
             <form action="add_rating.php" method="post">
@@ -37,6 +37,68 @@ $result = $connect->query($sql);
                 <button type="submit">Submit!</button>
             </form>
         </div>
+
+        <div>
+            <?php
+            $movie_dict = array();
+            $sql = "SELECT movie_id, title FROM movies";
+            $result = $connect->query($sql);
+            while ($row = $result->fetch_assoc()) {
+                $movie_dict[$row['movie_id']] = $row['title'];
+            }
+            //$movie_array["1"] = 'hello';
+            echo "" . print_r($movie_dict) . "<br>";
+
+            $ratings_dict = array();
+            $sql = "SELECT user_id, movie_id, ratings FROM ratings";
+            $result = $connect->query($sql);
+            while ($row = $result->fetch_assoc()) {
+                $ratings_dict[$row['user_id']][$row['movie_id']] = $row['ratings'];
+            }
+            echo "" . print_r($ratings_dict) . "<br>";
+
+            $users_dict = array();
+            $sql = "SELECT user_id, user_name FROM users";
+            $result = $connect->query($sql);
+            while ($row = $result->fetch_assoc()) {
+                $users_dict[$row["user_id"]] = $row['user_name'];
+            }
+            echo "" . print_r($users_dict);
+
+            ?>
+        </div>
+
+        <div>
+            <?php 
+            $sql = "SELECT title, movie_id FROM movies";
+            $result = $connect->query($sql);
+            echo "<table>";
+            echo "<tr>";
+            echo "<th> Users </th>";
+            $count = 0;
+            while ($row = $result->fetch_assoc()) {
+                echo "<th>" . $row['title'] .  "</th>";
+                $count++;
+            }
+            echo "</tr>";
+            $sql = "SELECT * FROM users";
+            $result = $connect->query($sql);
+
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr>";
+                echo "<td>" . $row['user_name'] .  "</td>";
+                $sql_rating = "SELECT * FROM ratings WHERE user_id = " .  $row['user_id'];
+                $result_rating = $connect->query($sql_rating);
+                /* while ($row_rating = $result_rating->fetch_assoc()) {
+                    if ($row_rating[''] == $row['user_id']) {
+                    //echo "<td> . $row_rating['"
+                } */
+                echo "</tr>";
+            }
+            echo "</table>";
+            ?>
+        </div>
+
         <!-- This div is for the returned movies that the user has already rated -->
         <div>
             <?php
@@ -45,7 +107,7 @@ $result = $connect->query($sql);
             while ($row = $result->fetch_assoc()) {
                 $user_id = $row['user_id'];
                 $movie_id = $row['movie_id'];
-                $rating = $row['rating'];
+                $rating = $row['ratings'];
                 $sql = "SELECT * FROM movies WHERE movie_id = $movie_id";
                 $newResult = $connect->query($sql);
                 $movieInfo = $newResult->fetch_assoc();
