@@ -48,6 +48,16 @@ $result = $connect->query($sql);
         <div>
             <!-- Convert the sql tables into dictionaries -->
             <?php
+            $sql = "SELECT * FROM users WHERE user_id != " . $_SESSION['uid'];
+            $result = $connect->query($sql);
+            // need to find every user that isnt yourself to compare set of movies watched together
+            while ($row = $result->fetch_assoc()) {
+                $userAverage = 0;
+                $comparedUser = $row['user_id'];
+                $comparedUserAverage = 0;
+                $sql = "SELECT * FROM ratings WHERE user_id";
+
+            }
             $movie_dict = array();
             $sql = "SELECT movie_id, title FROM movies";
             $result = $connect->query($sql);
