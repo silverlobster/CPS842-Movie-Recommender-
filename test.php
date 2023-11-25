@@ -19,6 +19,9 @@ while ($row = $result->fetch_assoc()) {
 $sim_dict = array();
 $sql = "SELECT * FROM users WHERE user_id != " . $_SESSION['uid'];
 $result = $connect->query($sql);
+
+print_r($ratings_dict);
+echo "" . "<br>";
 while ($row = $result->fetch_assoc()) {
     $compared_user = $row['user_id'];
     $compared_user_average_rating = 0;
@@ -28,32 +31,45 @@ while ($row = $result->fetch_assoc()) {
     $compared_user_denom = 0;
     $user_denom = 0;
     //get all user movies that theyve rated
-    $sql = "SELECT movie_id, ratings FROM ratings WHERE user_id = ". $_SESSION['uid'];
+    $sql = "SELECT movie_id, ratings FROM ratings WHERE user_id = ". $_SESSION['uid'];  
     $newResult = $connect->query($sql);
+    //print_r($newResult);
+    //echo "" . "<br>";
+    print($compared_user);
+    echo "" . "<br>";
     while($common_movies = $newResult->fetch_assoc()) {
         //if there is a common movie in between two users, calculate the values to get user CF
+        print_r($common_movies);
+        echo "" . "<br>";
+        //print(isset($ratings_dict[$compared_user][$common_movies['movie_id']]));
         if (isset($ratings_dict[$compared_user][$common_movies['movie_id']])) {
+            print($num_same_movies);
             $num_same_movies += 1;
             $user_average_rating += $ratings_dict[$_SESSION['uid']][$common_movies['movie_id']];
             $compared_user_average_rating += $ratings_dict[$compared_user][$common_movies['movie_id']];
         }
     }
-    $user_average_rating /= $num_same_movies;
-    $compared_user_average_rating /= $num_same_movies;
-    while($common_movies = $newResult->fetch_assoc()) {
-        //if there is a common movie in between two users, calculate the values to get user CF
-        if (isset($ratings_dict[$compared_user][$common_movies['movie_id']])) {
-            $numerator += ($ratings_dict[$compared_user][$common_movies['movie_id']] - $compared_user_average_rating) * ($ratings_dict[$_SESSION['uid']][$common_movies['movie_id']] - $user_average_rating0);
-            $compared_user_denom += ($ratings_dict[$compared_user][$common_movies['movie_id']] - $compared_user_average_rating) ** 2;
-            $user_denom += ($ratings_dict[$_SESSION['uid']][$common_movies['movie_id']] - $user_average_rating0) ** 2;
+    if ($num_same_movies != 0) {
+        $user_average_rating /= $num_same_movies;
+        $compared_user_average_rating /= $num_same_movies;
+        while($common_movies = $newResult->fetch_assoc()) {
+            //if there is a common movie in between two users, calculate the values to get user CF
+            if (isset($ratings_dict[$compared_user][$common_movies['movie_id']])) {
+                $numerator += ($ratings_dict[$compared_user][$common_movies['movie_id']] - $compared_user_average_rating) * ($ratings_dict[$_SESSION['uid']][$common_movies['movie_id']] - $user_average_rating0);
+                $compared_user_denom += ($ratings_dict[$compared_user][$common_movies['movie_id']] - $compared_user_average_rating) ** 2;
+                $user_denom += ($ratings_dict[$_SESSION['uid']][$common_movies['movie_id']] - $user_average_rating0) ** 2;
+            }
+        }
+        if (sqrt($compared_user_denom * $user_denom) != 0) {
+            $sim_dict[$compared_user] = $numerator / (sqrt($compared_user_denom * $user_denom));
+        } else {
+            $sim_dict[$compared_user] = 0;
         }
     }
-    if (sqrt($compared_user_denom * $user_denom) != 0) {
-        $sim_dict[$compared_user] = $numerator / (sqrt($compared_user_denom * $user_denom));
-    } else {
+    else {
         $sim_dict[$compared_user] = 0;
     }
-    print_r($sim_dict);
 }
+print_r($sim_dict);
 echo "done";
 ?>
