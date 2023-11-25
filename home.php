@@ -10,6 +10,13 @@ $result = $connect->query($sql);
 <html>
     <head>
         <title> Home Page</title>
+        <style>
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        </style>
     </head>
     <body>
         <?php
@@ -67,6 +74,7 @@ $result = $connect->query($sql);
             ?>
         </div>
 
+        <!-- This table is to visualize calculation -->
         <div>
             <?php
             echo "<table>";
@@ -78,37 +86,15 @@ $result = $connect->query($sql);
             echo "</tr>";
             foreach ($ratings_dict as $user => $ratings ) {
                 echo "<tr>";
-                echo "<td>" . $users_dict[$user] . "<td>";
-                echo "</tr>";
-            }
-            ?>
-        </div>
-
-        <div>
-            <?php 
-            $sql = "SELECT title, movie_id FROM movies";
-            $result = $connect->query($sql);
-            echo "<table>";
-            echo "<tr>";
-            echo "<th> Users </th>";
-            $count = 0;
-            while ($row = $result->fetch_assoc()) {
-                echo "<th>" . $row['title'] .  "</th>";
-                $count++;
-            }
-            echo "</tr>";
-            $sql = "SELECT * FROM users";
-            $result = $connect->query($sql);
-
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr>";
-                echo "<td>" . $row['user_name'] .  "</td>";
-                $sql_rating = "SELECT * FROM ratings WHERE user_id = " .  $row['user_id'];
-                $result_rating = $connect->query($sql_rating);
-                /* while ($row_rating = $result_rating->fetch_assoc()) {
-                    if ($row_rating[''] == $row['user_id']) {
-                    //echo "<td> . $row_rating['"
-                } */
+                echo "<td>" . $users_dict[$user] . "</td>";
+                for ( $i = 1; $i <= count($movie_dict); $i++ ) {
+                    if (array_key_exists($i, $ratings)) {
+                        echo "<td>". $ratings[$i] . "</td>";
+                    }
+                    else {
+                        echo "<td>"."</td>";
+                    }
+                }
                 echo "</tr>";
             }
             echo "</table>";

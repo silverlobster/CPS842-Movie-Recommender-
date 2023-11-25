@@ -36,7 +36,7 @@
     'CoMix Wave Films'
     )");
 
-    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    /* $connect->query("INSERT into movies (title, genre, summary, studio) Values 
     ('Kaguya-sama: Love is War - The First Kiss That Never Ends',
     'Comedy, Drama, Romance', 
     'After their first kiss, Kaguya Shinomiya and Miyuki Shirogane are left unsure where their relationship stands.', 
@@ -69,9 +69,9 @@
     'Action, Adventure, Award Winning, Fantasy', 
     'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
     'Studio Ghibli'
-    )");
+    )"); */
 
-    $connect->query("INSERT into movies (title, genre, summary, studio) Values 
+    /* $connect->query("INSERT into movies (title, genre, summary, studio) Values 
     ('Fate/stay night: Heavens Feel III. Spring Song',
     'Action, Fantasy, Supernatural', 
     'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
@@ -212,7 +212,7 @@
     )");
 
     $connect->query("INSERT into movies (title, genre, summary, studio) Values 
-    ('Fate/stay night: Heavens Feel II. Lost Butterfly',
+    ('Fate/stay night: Heavens Feel  II. Lost Butterfly',
     'Action, Adventure, Award Winning, Fantasy', 
     'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
     'Studio Ghibli'
@@ -371,8 +371,9 @@
     'When an Emishi village is attacked by a fierce demon boar, the young prince Ashitaka puts his life at stake to defend his tribe. With its dying breath, the beast curses the princes arm, granting him demonic powers while gradually siphoning his life away.', 
     'Studio Ghibli'
     )");
+    */
 
-    $connect->close();
+    $connect->close(); 
 
     //movie: movie_id, title, genre, user_id, summary, studio
 ?>
