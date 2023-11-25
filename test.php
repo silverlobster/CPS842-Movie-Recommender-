@@ -43,7 +43,7 @@ while ($row = $result->fetch_assoc()) {
         echo "" . "<br>";
         //print(isset($ratings_dict[$compared_user][$common_movies['movie_id']]));
         if (isset($ratings_dict[$compared_user][$common_movies['movie_id']])) {
-            print($num_same_movies);
+            print($num_same_movies);   
             $num_same_movies += 1;
             $user_average_rating += $ratings_dict[$_SESSION['uid']][$common_movies['movie_id']];
             $compared_user_average_rating += $ratings_dict[$compared_user][$common_movies['movie_id']];
