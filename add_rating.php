@@ -2,25 +2,26 @@
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         require "db_connect.php";
         session_start();
-        $movie_title = $_POST['movie_title'];
+        $movie_id = $_POST['movie_title'];
         $rating = $_POST['rating'];
 
-        //find if username exists
-        $sql = "INSERT into ratings (user_id, movie_id, ratings) Values (".$_SESSION['uid'].", $movie_title, $rating)";
-        //$sql = "INSERT INTO ratings (user_id, movie_id, ratings) VALUES (?, ?, ?)";
+        //check if the user already made a rating for that movie
+        $sql_check = "SELECT * FROM ratings WHERE user_id = " . $_SESSION['uid'] . " AND movie_id = $movie_id";
+        $result = $connect->query($sql_check);
+        if ($result) {
+            $id = $result->fetch_assoc();
+            $sql = "UPDATE ratings SET ratings = $rating WHERE rating_id = " . $id['rating_id'];
+        } else {
+
+            $sql = "INSERT into ratings (user_id, movie_id, ratings) Values (".$_SESSION['uid'].", $movie_id, $rating)";
+        }
         $result = $connect->query($sql);
-        //$stmt = $connect->prepare($sql);
+        //find if username exists
 
-        //$stmt->bind_param("iii", $user_id, $movie_title, $rating);
-
-        //$result = $stmt->execute();
-
-        //if there exists a user then they should connect
         if ($result) {
             echo "Movie rating successfully created";
         }
         else {
-            // $connect->query($sql);
             die(mysqli_error($connect));
         }
 
