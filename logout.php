@@ -1,6 +1,6 @@
 <?php
 session_start();
 if (session_abort()){
-    header("location: login.html");
+    header("location: login.php");
 }
 ?>

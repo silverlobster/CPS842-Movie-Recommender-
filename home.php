@@ -29,10 +29,10 @@ $result = $connect->query($sql);
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="test.php">Recomendations</a>
+                        <a class="nav-link" href="test.php">Recommendations</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="logout.php">Log Out</a>
@@ -43,7 +43,7 @@ $result = $connect->query($sql);
 
         <div class="form-group justify-content-center mx-5 my-3"></div>
             <div class="container">
-                <form class="mb-3" action="add_rating.php" method="post">
+                <form class="mb-3" action="home.php" method="post">
                     <div class="form-group">
                         <label>Rate a movie!</label>
                         <select class="form-select mb-3 mt-3" name="movie_title">
@@ -58,28 +58,58 @@ $result = $connect->query($sql);
                     </div>
                     <div class="form-group">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="rating0" value="0">0
+                            <input class="form-check-input" type="radio" name="rating" value="0">0
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="rating1" value="1">1
+                            <input class="form-check-input" type="radio" name="rating" value="1">1
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="rating2" value="2">2
+                            <input class="form-check-input" type="radio" name="rating" value="2">2
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="rating3" value="3">3
+                            <input class="form-check-input" type="radio" name="rating" value="3">3
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="rating4" value="4">4
+                            <input class="form-check-input" type="radio" name="rating" value="4">4
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="rating5" value="5">5
+                            <input class="form-check-input" type="radio" name="rating" value="5">5
                         </div>
                     </div>
-                    <button class="btn btn-secondary my-3" type="submit">Submit!</button>
+                    <button class="btn btn-secondary my-3" name="submit" type="submit">Submit!</button>
                 </form>
             </div>
         </div>
+
+        <?php
+        if (isset($_POST["submit"])) {
+            //require "db_connect.php";
+            //session_start();
+            $movie_id = $_POST['movie_title'];
+            $rating = $_POST['rating'];
+
+            //check if the user already made a rating for that movie
+            $sql_check = "SELECT * FROM ratings WHERE user_id = " . $_SESSION['uid'] . " AND movie_id = $movie_id";
+            $result_check = $connect->query($sql_check);
+
+            if ($result_check->num_rows > 0) {
+                $id = $result_check->fetch_assoc();
+                $sql = "UPDATE ratings SET ratings = '$rating' WHERE rating_id = " . $id['rating_id'];
+            } else {
+                $sql = "INSERT into ratings (user_id, movie_id, ratings) Values (".$_SESSION['uid'].", $movie_id, $rating)";
+            }
+
+            $result_check = $connect->query($sql);
+            //find if username exists
+
+            if ($result_check) {
+                echo "Movie rating successfully created";
+            }
+            else {
+                die(mysqli_error($connect));
+            }
+        }
+        ?>
 
         <div>
             <!-- Convert the sql tables into dictionaries -->
