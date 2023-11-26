@@ -95,5 +95,5 @@ while ($row = $result->fetch_assoc()) {
 // echo "</br> recommendations are: </br>";
 // print_r($recommendations);
 arsort($recommendations);
-print_r(array_slice($recommendations, 0, 10));
+print_r(array_slice($recommendations, 0, 10, TRUE));
 ?>
