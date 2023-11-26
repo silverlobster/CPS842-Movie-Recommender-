@@ -61,5 +61,37 @@ while ($row = $result->fetch_assoc()) {
     }
 }
 print_r($sim_dict);
-echo "done";
+echo "done </br>";
+function positive($var) {
+    if ($var > 0) {
+        return true;
+    }
+}
+$sim_dict = array_filter($sim_dict, 'positive');
+print_r($sim_dict);
+echo "</br>";
+$recommendations = array();
+$sql = "SELECT * FROM movies";
+$result = $connect->query($sql);
+while ($row = $result->fetch_assoc()) {
+    $recommendation_score = 0;
+    $invert = 0;
+    //if the movie doesnt exist in ratings (they haven't created a rating)
+    if (!isset($ratings_dict[$_SESSION['uid']][$row['movie_id']])) {
+        foreach($sim_dict as $compared_user => $sim_score) {
+            // echo $row['title'] . " $compared_user => $sim_score </br>"; 
+            if ($sim_score > 0) {
+                if (isset($ratings_dict[$compared_user][$row['movie_id']])) {
+                    $recommendation_score += $sim_dict[$compared_user] * $ratings_dict[$compared_user][$row['movie_id']];
+                    $invert += $sim_dict[$compared_user];
+                }
+            }
+        }
+        if ($invert != 0){
+            $recommendations[$row['movie_id']] = (1/$invert) * $recommendation_score;
+        }
+    }
+}
+echo "</br> recommendations are: </br>";
+print_r($recommendations);
 ?>
