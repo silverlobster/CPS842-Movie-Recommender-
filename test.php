@@ -71,16 +71,16 @@ while ($row = $result->fetch_assoc()) {
         $sim_dict[$compared_user] = 0;
     }
 }
-print_r($sim_dict);
-echo "done </br>";
+//print_r($sim_dict);
+//echo "done </br>";
 function positive($var) {
     if ($var > 0) {
         return true;
     }
 }
 $sim_dict = array_filter($sim_dict, 'positive');
-print_r($sim_dict);
-echo "</br>";
+//print_r($sim_dict);
+//echo "</br>";
 $recommendations = array();
 $sql = "SELECT * FROM movies";
 $result = $connect->query($sql);
