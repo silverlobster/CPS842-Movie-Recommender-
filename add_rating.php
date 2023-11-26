@@ -19,6 +19,7 @@
 
         if ($result) {
             echo "Movie rating successfully created";
+            header("home.php");
         }
         else {
             die(mysqli_error($connect));

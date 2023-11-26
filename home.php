@@ -28,36 +28,57 @@ $result = $connect->query($sql);
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="test.php">Recomendations<span class="sr-only"></span></a>
-                </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="test.php">Recomendations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.php">Log Out</a>
+                    </li>
+                </ul>
             </div>
         </nav>
 
-        <div>
-            <form action="add_rating.php" method="post">
-                <label>Rate a movie!</label>
-                <select name="movie_title">
-                    <?php
-                    while ($row = $result->fetch_assoc()) {
-                        $title = $row['title'];
-                        $id = $row['movie_id'];
-                        echo '<option value="'.htmlspecialchars($id).'">'.htmlspecialchars($title).'</option>';
-                    }
-                    ?>
-                </select>
-                <div>
-                    <input type="radio" name="rating" value="1">1
-                    <input type="radio" name="rating" value="2">2
-                    <input type="radio" name="rating" value="3">3
-                    <input type="radio" name="rating" value="4">4
-                    <input type="radio" name="rating" value="5">5
-                </div>
-                <button type="submit">Submit!</button>
-            </form>
+        <div class="form-group justify-content-center mx-5 my-3"></div>
+            <div class="container">
+                <form class="mb-3" action="add_rating.php" method="post">
+                    <div class="form-group">
+                        <label>Rate a movie!</label>
+                        <select class="form-select mb-3 mt-3" name="movie_title">
+                            <?php
+                            while ($row = $result->fetch_assoc()) {
+                                $title = $row['title'];
+                                $id = $row['movie_id'];
+                                echo '<option value="'.htmlspecialchars($id).'">'.htmlspecialchars($title).'</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="rating0" value="0">0
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="rating1" value="1">1
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="rating2" value="2">2
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="rating3" value="3">3
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="rating4" value="4">4
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="rating5" value="5">5
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary my-3" type="submit">Submit!</button>
+                </form>
+            </div>
         </div>
 
         <div>
@@ -128,79 +149,8 @@ $result = $connect->query($sql);
             ?>
         </div>
 
-
-        <div>
-            <?php
-            //chosen user is the session_uid, find chosen user
-            foreach ($ratings_dict as $user_id => $movie_ids) {
-                if ($user_id == $_SESSION['uid']) {
-                    $chosen_user = $movie_ids;
-                    $chosen_id = $user_id;
-                }
-            }
-            //echo "" . print_r($chosen_user) . "<br>";
-
-            //find averages, omit movies that chosen user hasn't rated
-            $average_dict = array();
-            foreach ($ratings_dict as $user_id => $movie_ids) {
-                $average = 0;
-                $total_movies = 0;
-                foreach ($movie_ids as $movie_key => $movie_id) {
-                    if (array_key_exists($movie_key, $chosen_user)) {
-                        $average += $movie_id;
-                        $total_movies += 1;
-                    }
-                }
-                $average_dict[$user_id] = $average / $total_movies;
-            }
-            //echo "" . print_r($average_dict) . "<br>";
-
-            //plug in the values to the Pearson correlation coefficient formula
-            $numerator_dict = array();
-            $denom_dict = array();
-            $cossim_dict = array();
-            foreach ($ratings_dict as $user_id => $movie_ids) {
-                $numerator_dict[$user_id] = [];
-                $denom_dict[$user_id] = [];
-                $cossim_dict[$user_id] = [];
-                $numerator = 0;
-                $absolute = 0;
-                $chosen_absolute = 0;
-                foreach ($movie_ids as $movie_key => $movie_id) {
-                    if (array_key_exists($movie_key, $chosen_user)) {
-                        //echo "" . ($chosen_user[$movie_key] - $average_dict[$chosen_id]) . " * " . ($movie_id - $average_dict[$user_id]);
-                        $numerator += ($chosen_user[$movie_key] - $average_dict[$chosen_id]) * ($movie_id - $average_dict[$user_id]);
-                        $absolute += ($movie_id - $average_dict[$user_id]) ** 2;
-                        $chosen_absolute += ($chosen_user[$movie_key] - $average_dict[$chosen_id]) ** 2;
-                        //echo "<br>";
-                    }
-                }
-                echo "<br>";
-                array_push($numerator_dict[$user_id], $numerator);
-                array_push($denom_dict[$user_id], $absolute * $chosen_absolute);
-                if ($user_id == $chosen_id) {
-                    $cossim_dict[$user_id] = $numerator / sqrt($absolute * $chosen_absolute);
-                }
-            } 
-            //echo "" . print_r($numerator_dict) . "<br>";
-            //echo "" . print_r($denom_dict) . "<br>";
-            //echo "" . print_r($cossim_dict) . "<br>";
-
-            //find similar users to chosen user, find positive values
-            $similar_dict = array();
-            foreach ($cossim_dict as $user_id => $cossim) {
-                //print_r($cossim);
-                if ($cossim > 0) {
-                    $similar_dict[$user_id] = $cossim;
-                }
-            }
-            //echo "" . print_r($similar_dict) . "<br>";
-            ?>
-        </div>
-
         <!-- This div is for the returned movies that the user has already rated -->
-        <div>
-            <?php
+            <!-- <?php
             $sql = "SELECT * FROM ratings WHERE user_id = " . $_SESSION['uid'];
             $result = $connect->query($sql);
             while ($row = $result->fetch_assoc()) {
@@ -216,10 +166,6 @@ $result = $connect->query($sql);
                 $studio = $movieInfo['studio'];
                 echo "<div><h1>$title</h1><p>Synopsis: $summary</p><p>Genres: $genre</p><p>".$_SESSION['user'].": $rating</p></div>";
             }
-            ?>
-        </div>
-        <p>
-            <a href="logout.php">Log Out!</a>
-        </p>
+            ?> -->
     </body>
 </html>
