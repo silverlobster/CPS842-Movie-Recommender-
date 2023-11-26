@@ -9,6 +9,7 @@ $result = $connect->query($sql);
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <title> Home Page</title>
         <style>
         td, th {
@@ -19,9 +20,23 @@ $result = $connect->query($sql);
         </style>
     </head>
     <body>
-        <?php
-        echo "<h1>Hello</h1>" . $_SESSION["user"] . $_SESSION["uid"]
-        ?>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand mx-3" href="#">
+                <?php echo "Hello " . $_SESSION["user"]?>! Welcome to Movie Recommender</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="test.php">Recomendations<span class="sr-only"></span></a>
+                </li>
+            </div>
+        </nav>
+
         <div>
             <form action="add_rating.php" method="post">
                 <label>Rate a movie!</label>
@@ -65,7 +80,7 @@ $result = $connect->query($sql);
             while ($row = $result->fetch_assoc()) {
                 $movie_dict[$row['movie_id']] = $row['title'];
             }
-            echo "" . print_r($movie_dict) . "<br>";
+            //echo "" . print_r($movie_dict) . "<br>";
             //get ratings dictionary
             $ratings_dict = array();
             $sql = "SELECT user_id, movie_id, ratings FROM ratings";
@@ -73,7 +88,7 @@ $result = $connect->query($sql);
             while ($row = $result->fetch_assoc()) {
                 $ratings_dict[$row['user_id']][$row['movie_id']] = $row['ratings'];
             }
-            echo "" . print_r($ratings_dict) . "<br>";
+            //echo "" . print_r($ratings_dict) . "<br>";
 
             //get users dictionary
             $users_dict = array();
@@ -82,7 +97,7 @@ $result = $connect->query($sql);
             while ($row = $result->fetch_assoc()) {
                 $users_dict[$row["user_id"]] = $row['user_name'];
             }
-            echo "" . print_r($users_dict) . "<br>";
+            //echo "" . print_r($users_dict) . "<br>";
             ?>
         </div>
 
@@ -123,7 +138,7 @@ $result = $connect->query($sql);
                     $chosen_id = $user_id;
                 }
             }
-            echo "" . print_r($chosen_user) . "<br>";
+            //echo "" . print_r($chosen_user) . "<br>";
 
             //find averages, omit movies that chosen user hasn't rated
             $average_dict = array();
@@ -138,7 +153,7 @@ $result = $connect->query($sql);
                 }
                 $average_dict[$user_id] = $average / $total_movies;
             }
-            echo "" . print_r($average_dict) . "<br>";
+            //echo "" . print_r($average_dict) . "<br>";
 
             //plug in the values to the Pearson correlation coefficient formula
             $numerator_dict = array();
@@ -167,9 +182,9 @@ $result = $connect->query($sql);
                     $cossim_dict[$user_id] = $numerator / sqrt($absolute * $chosen_absolute);
                 }
             } 
-            echo "" . print_r($numerator_dict) . "<br>";
-            echo "" . print_r($denom_dict) . "<br>";
-            echo "" . print_r($cossim_dict) . "<br>";
+            //echo "" . print_r($numerator_dict) . "<br>";
+            //echo "" . print_r($denom_dict) . "<br>";
+            //echo "" . print_r($cossim_dict) . "<br>";
 
             //find similar users to chosen user, find positive values
             $similar_dict = array();
@@ -179,19 +194,7 @@ $result = $connect->query($sql);
                     $similar_dict[$user_id] = $cossim;
                 }
             }
-            echo "" . print_r($similar_dict) . "<br>";
-
-            //calculate and predict chosen user's unwatched movie ratings
-            $predict_dict = array();
-            for ( $i = 1; $i <= count($movie_dict); $i++ ) {
-                $inverse = 0;
-                $inverse_ratings = 0;
-                if (!(array_key_exists($i, $chosen_user))) {
-                    foreach ($similar_dict as $user_id)
-                }
-            } 
-
-
+            //echo "" . print_r($similar_dict) . "<br>";
             ?>
         </div>
 
