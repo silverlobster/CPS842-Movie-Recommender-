@@ -143,8 +143,9 @@ while ($row = $result->fetch_assoc()) {
 // echo "</br> recommendations are: </br>";
 // print_r($recommendations);
 arsort($recommendations);
+echo "User Collected Data: ";
 print_r(array_slice($recommendations, 0, 10, TRUE));
-echo "<br>";
+echo "<br><br>";
 ?>
 
 <?php
