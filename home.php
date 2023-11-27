@@ -22,7 +22,15 @@ $result = $connect->query($sql);
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand mx-3" href="#">
-                <?php echo "Hello " . $_SESSION["user"]?>! Welcome to Movie Recommender</a>
+                <?php 
+                if (isset($_SESSION['user'])) {
+                    echo "Hello " . $_SESSION["user"];
+                }
+                else {
+                    header("location: login.php");
+                }
+                ?>
+                ! Welcome to Movie Recommender</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -180,7 +188,7 @@ $result = $connect->query($sql);
         </div>
 
         <!-- This div is for the returned movies that the user has already rated -->
-            <!-- <?php
+            <?php
             $sql = "SELECT * FROM ratings WHERE user_id = " . $_SESSION['uid'];
             $result = $connect->query($sql);
             while ($row = $result->fetch_assoc()) {
@@ -196,6 +204,6 @@ $result = $connect->query($sql);
                 $studio = $movieInfo['studio'];
                 echo "<div><h1>$title</h1><p>Synopsis: $summary</p><p>Genres: $genre</p><p>".$_SESSION['user'].": $rating</p></div>";
             }
-            ?> -->
+            ?>
     </body>
 </html>

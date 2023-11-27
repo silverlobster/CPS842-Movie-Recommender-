@@ -17,7 +17,15 @@ require "db_connect.php";
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand mx-3" href="#">
-                <?php echo "Hello " . $_SESSION["user"]?>! Welcome to Movie Recommender</a>
+                <?php 
+                if (isset($_SESSION['user'])) {
+                    echo "Hello " . $_SESSION["user"];
+                }
+                else {
+                    header("location: login.php");
+                }
+                ?>
+                ! Welcome to Movie Recommender</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -45,7 +53,6 @@ $result = $connect->query($sql);
  while ($row = $result->fetch_assoc()) {
      $movie_dict[$row['movie_id']] = $row['title'];
 }
-//print_r($movie_dict);
 
 $ratings_dict = array();
 $sql = "SELECT user_id, movie_id, ratings FROM ratings";
@@ -58,8 +65,6 @@ $sim_dict = array();
 $sql = "SELECT * FROM users WHERE user_id != " . $_SESSION['uid'];
 $result = $connect->query($sql);
 
-//print_r($ratings_dict);
-//echo "" . "<br>";
 while ($row = $result->fetch_assoc()) {
     $compared_user = $row['user_id'];
     $compared_user_average_rating = 0;
@@ -72,14 +77,8 @@ while ($row = $result->fetch_assoc()) {
     $sql = "SELECT movie_id, ratings FROM ratings WHERE user_id = ". $_SESSION['uid'];  
     $newResult = $connect->query($sql);
     //print_r($newResult);
-    //echo "" . "<br>";
-    //print($compared_user);/
-    //echo "" . "<br>";
     while($common_movies = $newResult->fetch_assoc()) {
         //if there is a common movie in between two users, calculate the values to get user CF
-        //print_r($common_movies);
-        //echo "" . "<br>";
-        //print(isset($ratings_dict[$compared_user][$common_movies['movie_id']]));
         if (isset($ratings_dict[$compared_user][$common_movies['movie_id']])) {
             //print($num_same_movies);   
             $num_same_movies += 1;
@@ -155,5 +154,77 @@ echo "<br>";
             echo $movie_dict[$movie_key] . "<br>";
         }
     }
-     
 ?>
+
+<div>
+    <!-- Convert the sql tables into dictionaries -->
+    <?php
+    $sql = "SELECT * FROM users WHERE user_id != " . $_SESSION['uid'];
+    $result = $connect->query($sql);
+    // need to find every user that isnt yourself to compare set of movies watched together
+    while ($row = $result->fetch_assoc()) {
+        $userAverage = 0;
+        $comparedUser = $row['user_id'];
+        $comparedUserAverage = 0;
+        $sql = "SELECT * FROM ratings WHERE user_id";
+
+    }
+    //get movie dictionary
+    $movie_dict = array();
+    $sql = "SELECT movie_id, title FROM movies";
+    $result = $connect->query($sql);
+    while ($row = $result->fetch_assoc()) {
+        $movie_dict[$row['movie_id']] = $row['title'];
+    }
+    //echo "" . print_r($movie_dict) . "<br>";
+    //get ratings dictionary
+    $ratings_dict = array();
+    $sql = "SELECT user_id, movie_id, ratings FROM ratings";
+    $result = $connect->query($sql);
+    while ($row = $result->fetch_assoc()) {
+        $ratings_dict[$row['user_id']][$row['movie_id']] = $row['ratings'];
+    }
+    //echo "" . print_r($ratings_dict) . "<br>";
+
+    //get users dictionary
+    $users_dict = array();
+    $sql = "SELECT user_id, user_name FROM users";
+    $result = $connect->query($sql);
+    while ($row = $result->fetch_assoc()) {
+        $users_dict[$row["user_id"]] = $row['user_name'];
+    }
+    //echo "" . print_r($users_dict) . "<br>";
+    ?>
+</div>
+
+<!-- This table is to visualize calculation -->
+<div>
+    <?php
+    echo "<table>";
+    echo "<tr>";
+    echo "<th> Users </th>";
+    for ( $i = 1; $i <= count($movie_dict); $i++ ) {
+        echo "<th>" . $movie_dict[$i] . "</th>";
+    }
+    echo "</tr>";
+    foreach ($ratings_dict as $user => $ratings ) {
+        echo "<tr>";
+        echo "<td>" . $users_dict[$user] . "</td>";
+        for ( $i = 1; $i <= count($movie_dict); $i++ ) {
+            if (array_key_exists($i, $ratings)) {
+                echo "<td>". $ratings[$i] . "</td>";
+            }
+            else {
+                if (array_key_exists($i, $recommendations) && $user == $_SESSION['uid']) {
+                    echo "<td style='color:green'>". $recommendations[$i] . "</td>";
+                }
+                else {
+                    echo "<td></td>";
+                }
+            }
+        }
+        echo "</tr>";
+    }
+    echo "</table>";
+    ?>
+</div>
